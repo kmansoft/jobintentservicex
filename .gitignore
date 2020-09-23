@@ -1,0 +1,16 @@
+*.iml
+.idea
+.gradle
+.vscode
+build/
+node_modules/
+captures/
+package-lock.json
+*.js.map
+*.out
+GeoLite2-*
+/server/go.sum
+gradlew
+gradlew.bat
+gradle/
+local.properties
