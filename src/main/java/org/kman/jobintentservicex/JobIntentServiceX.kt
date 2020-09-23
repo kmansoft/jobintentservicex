@@ -72,6 +72,8 @@ abstract class JobIntentServiceX(val mExecutor: Executor) : JobService() {
 
 	// New implementation (8.0 or newer)
 	override fun onStartJob(params: JobParameters?): Boolean {
+		Log.i(TAG, "onStartJob $params")
+
 		if (params != null) {
 			val jobId = params.jobId
 
