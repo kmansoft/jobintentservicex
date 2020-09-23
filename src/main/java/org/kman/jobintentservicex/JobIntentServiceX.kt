@@ -21,11 +21,13 @@ abstract class JobIntentServiceX(val mExecutor: Executor) : JobService() {
 	override fun onCreate() {
 		super.onCreate()
 
-		val app = applicationContext
-		val pm = app.getSystemService(Context.POWER_SERVICE) as PowerManager
-		val tag = javaClass.name + ":running"
-		mRunningWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, tag).apply {
-			setReferenceCounted(false)
+		if (Build.VERSION.SDK_INT < 26) {
+			val app = applicationContext
+			val pm = app.getSystemService(Context.POWER_SERVICE) as PowerManager
+			val tag = javaClass.name + ":running"
+			mRunningWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, tag).apply {
+				setReferenceCounted(false)
+			}
 		}
 	}
 
