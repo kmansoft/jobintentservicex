@@ -19,7 +19,6 @@ Caused by: java.lang.SecurityException: Caller no longer running, last stopped +
         at android.app.job.JobParameters.dequeueWork(JobParameters.java:208)
         at android.support.v4.app.JobIntentService$JobServiceEngineImpl.dequeueWork(SourceFile:314)
         at android.support.v4.app.JobIntentService.dequeueWork(SourceFile:639)
-        at android.support.v4.app.SafeJobIntentService.dequeueWork(SourceFile:31)
         at android.support.v4.app.JobIntentService$CommandProcessor.doInBackground(SourceFile:389)
         at android.support.v4.app.JobIntentService$CommandProcessor.doInBackground(SourceFile:382)
         at android.os.AsyncTask$2.call(AsyncTask.java:333)
