@@ -170,7 +170,10 @@ abstract class JobIntentServiceX(val mExecutor: Executor) : JobService() {
 			while (!stopRequested.get()) {
 				val work = next() ?: break
 				service.onHandleWork(work.intent)
-				params.completeWork(work)
+				try {
+					params.completeWork(work)
+				} catch (ignore: Exception) {
+				}
 			}
 
 			handler.obtainMessage(WHAT_NEW_JOB_RUNNABLE_DONE, this).sendToTarget()
