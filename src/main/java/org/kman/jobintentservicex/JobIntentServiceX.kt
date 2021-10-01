@@ -257,7 +257,7 @@ abstract class JobIntentServiceX(val mExecutor: Executor) : JobService() {
 		private var mStartingWakeLock: PowerManager.WakeLock? = null
 	}
 
-	private val mHandler = Handler(this::onHandlerMessage)
+	private val mHandler = Handler(Looper.getMainLooper(), this::onHandlerMessage)
 	private var mRunningIntentCount = 0
 	private var mRunningWakeLock: PowerManager.WakeLock? = null
 	private val mRunningJobList = SparseArray<JobRunnable>()
