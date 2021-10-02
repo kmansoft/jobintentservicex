@@ -9,6 +9,7 @@ import android.os.*
 import android.util.Log
 import android.util.SparseArray
 import java.util.concurrent.Executor
+import java.util.concurrent.RejectedExecutionException
 import java.util.concurrent.atomic.AtomicBoolean
 
 abstract class JobIntentServiceX(val mExecutor: Executor) : JobService() {
@@ -65,7 +66,21 @@ abstract class JobIntentServiceX(val mExecutor: Executor) : JobService() {
 				mRunningIntentCount += 1
 				mRunningWakeLock?.acquire(60 * 1000L)
 
-				mExecutor.execute(OldIntentRunnable(this, mHandler, intent, startId))
+				try {
+					mExecutor.execute(OldIntentRunnable(this, mHandler, intent, startId))
+				} catch (x: RejectedExecutionException) {
+					// Could not enqueue, ignore is the only thing we can do
+					mRunningIntentCount -= 1
+					if (mRunningIntentCount == 0) {
+						mRunningWakeLock?.also {
+							try {
+								it.release()
+							} catch (ignore: Exception) {
+							}
+						}
+						return START_NOT_STICKY
+					}
+				}
 
 				return START_REDELIVER_INTENT
 			}
@@ -90,7 +105,12 @@ abstract class JobIntentServiceX(val mExecutor: Executor) : JobService() {
 
 			if (jobNew != null) {
 				mRunningJobList.put(jobId, jobNew)
-				mExecutor.execute(jobNew)
+				try {
+					mExecutor.execute(jobNew)
+				} catch (x: RejectedExecutionException) {
+					// Could not enqueue, ask Android to retry
+					return false
+				}
 			}
 
 			return true
