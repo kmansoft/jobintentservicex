@@ -13,6 +13,8 @@ import java.util.concurrent.atomic.AtomicBoolean
 
 abstract class JobIntentServiceX(val mExecutor: Executor) : JobService() {
 
+	// Default constructor uses deprecated but still useful executor
+	@Suppress("DEPRECATION")
 	constructor() : this(AsyncTask.SERIAL_EXECUTOR) {
 	}
 
