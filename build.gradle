@@ -55,7 +55,7 @@ android {
 
 dependencies {
     // Kotlin
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7' + ':' + kotlin_stdlib_version
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8' + ':' + kotlin_stdlib_version
 
     testImplementation 'junit:junit:4+'
 
