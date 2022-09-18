@@ -28,7 +28,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 32
 
     namespace 'org.kman.jobintentservicex'
 
@@ -59,7 +59,7 @@ dependencies {
     // Kotlin
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8' + ':' + kotlin_stdlib_version
 
-    testImplementation 'junit:junit:4+'
+    testImplementation 'junit:junit:4.13.2'
 
     androidTestImplementation 'androidx.test.ext:junit' + ':' + '1+'
     androidTestImplementation 'androidx.test.espresso:espresso-core' + ':' + '3+'
