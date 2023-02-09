@@ -1,8 +1,8 @@
 buildscript {
     ext {
-        gradle_version = '7.4.0'
-        kotlin_plugin_version = '1.7.21'
-        kotlin_stdlib_version = '1.7.21'
+        gradle_version = '7.4.1'
+        kotlin_plugin_version = '1.8.0'
+        kotlin_stdlib_version = '1.8.0'
     }
     repositories {
         google()
@@ -55,7 +55,7 @@ android {
 
 dependencies {
     // Kotlin
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8' + ':' + kotlin_stdlib_version
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib' + ':' + kotlin_stdlib_version
 
     testImplementation 'junit:junit:4.13.2'
 
