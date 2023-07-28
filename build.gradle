@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        gradle_version = '8.0.1'
+        gradle_version = '8.0.2'
         kotlin_plugin_version = '1.8.20'
         kotlin_stdlib_version = '1.8.20'
     }
