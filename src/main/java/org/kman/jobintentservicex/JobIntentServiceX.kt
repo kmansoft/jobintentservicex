@@ -16,10 +16,9 @@ abstract class JobIntentServiceX(val mExecutor: Executor) : JobService() {
 
 	// Default constructor uses deprecated but still useful executor
 	@Suppress("DEPRECATION")
-	constructor() : this(AsyncTask.SERIAL_EXECUTOR) {
-	}
+	constructor() : this(AsyncTask.SERIAL_EXECUTOR)
 
-	abstract fun onHandleWork(intent: Intent)
+    abstract fun onHandleWork(intent: Intent)
 
 	override fun onCreate() {
 		super.onCreate()
@@ -179,7 +178,7 @@ abstract class JobIntentServiceX(val mExecutor: Executor) : JobService() {
 	}
 
 	// Job runnable - "new" implementation
-	private open class JobRunnable() {
+	private open class JobRunnable {
 		val stopRequested = AtomicBoolean(false)
 	}
 
