@@ -1,8 +1,8 @@
 buildscript {
     ext {
-        gradle_version = '8.2.0'
-        kotlin_plugin_version = '1.9.10'
-        kotlin_stdlib_version = '1.9.10'
+        gradle_version = '8.4.0'
+        kotlin_plugin_version = '1.9.22'
+        kotlin_stdlib_version = '1.9.22'
     }
     repositories {
         google()
@@ -51,7 +51,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
