@@ -1,29 +1,7 @@
-buildscript {
-    ext {
-        gradle_version = '8.5.0'
-        kotlin_plugin_version = '1.9.22'
-        kotlin_stdlib_version = '1.9.22'
-    }
-    repositories {
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        classpath "com.android.tools.build:gradle:$gradle_version"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_plugin_version"
-    }
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
 }
-
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-
-apply plugin: 'com.android.library'
-
-apply plugin: 'kotlin-android'
 
 android {
     compileSdk 34
@@ -59,8 +37,6 @@ android {
 
 dependencies {
     // Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_stdlib_version"
-
     testImplementation 'junit:junit:4.13.2'
 
     androidTestImplementation 'androidx.test.ext:junit:1.2.1'
