@@ -2,11 +2,10 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     id ("com.android.library")
-    id ("kotlin-android")
 }
 
 android {
-    compileSdk = 36
+    compileSdk = 37
 
     namespace = "org.kman.jobintentservicex"
 
@@ -19,16 +18,10 @@ android {
         targetCompatibility (JavaVersion.VERSION_11)
     }
 
-    kotlin {
-        compilerOptions {
-            jvmTarget = JvmTarget.JVM_11
-        }
-    }
-
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles (getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+            proguardFiles (getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
 }
